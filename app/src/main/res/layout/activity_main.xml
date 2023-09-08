@@ -113,6 +113,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:scaleType="fitXY"
                 android:src="@drawable/foodiesfeed_com_cheeseburger"
                 android:layout_width="63dp"
                 android:layout_height="63dp" />
@@ -133,6 +134,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:scaleType="fitXY"
                 android:src="@drawable/foodiesfeed_com_noodles_with_tomatoes"
                 android:layout_width="63dp"
                 android:layout_height="63dp" />
@@ -153,6 +155,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:scaleType="fitXY"
                 android:src="@drawable/foodiesfeed_com_french_fries_with_ketchup_top_view"
                 android:layout_width="63dp"
                 android:layout_height="63dp" />
@@ -173,6 +176,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:scaleType="fitXY"
                 android:src="@drawable/foodiesfeed_com_strawberry_milk_splash"
                 android:layout_width="63dp"
                 android:layout_height="63dp" />
@@ -221,7 +225,7 @@
             android:orientation="vertical">
             <ImageView
                 android:src="@drawable/front_view_tasty_meat_burger_with_cheese_salad_dark_background"
-
+                android:scaleType="fitXY"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 />
@@ -249,7 +253,7 @@
             android:orientation="vertical">
             <ImageView
                 android:src="@drawable/foodiesfeed_com_grilled_whole_chicken"
-
+                android:scaleType="fitXY"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 />
@@ -301,6 +305,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <ImageView
+                android:scaleType="fitXY"
                 android:src="@drawable/foodiesfeed_com_simple_italian_dish_spaghetti_with_fresh_basil_on_top"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
