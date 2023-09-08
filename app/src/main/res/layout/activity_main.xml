@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:layout_marginEnd="10dp"
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hai Binarian"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_judul"
+            android:layout_marginTop="2dp"
+            android:text="Mau Makan Apa Kamu Hari Ini"
+            android:textFontWeight="400"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/ib_cart"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_toLeftOf="@id/ib_accout"
+            android:background="@color/white"
+            android:src="@drawable/baseline_shopping_cart_24" />
+
+        <ImageButton
+            android:id="@+id/ib_accout"
+            android:layout_alignParentEnd="true"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white"
+            android:src="@drawable/baseline_account_circle_24" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:background="@color/design_default_color_error"
+        android:layout_margin="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <ImageView
+            android:src="@drawable/program_penjualan_dengan_diskon_bertingkat"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/im_awal"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            />
+        
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/tv_diskon"
+            android:layout_toRightOf="@+id/im_awal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diskon 30%"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:textSize="18dp"
+            android:layout_marginTop="17dp"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:layout_below="@id/tv_diskon"
+            android:layout_toRightOf="@+id/im_awal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diskon_text"
+            android:textStyle="normal"
+            android:layout_marginStart="16dp"
+            android:textSize="12dp"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:src="@drawable/foodiesfeed_com_cheeseburger"
+                android:layout_width="63dp"
+                android:layout_height="63dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Burger"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:src="@drawable/foodiesfeed_com_noodles_with_tomatoes"
+                android:layout_width="63dp"
+                android:layout_height="63dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Mie"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:src="@drawable/foodiesfeed_com_french_fries_with_ketchup_top_view"
+                android:layout_width="63dp"
+                android:layout_height="63dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Snack"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:src="@drawable/foodiesfeed_com_strawberry_milk_splash"
+                android:layout_width="63dp"
+                android:layout_height="63dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Minuman"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="22dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="17dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/tv_list_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List Menu Makanan"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+        <ImageButton
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@id/tv_list_menu"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/baseline_table_rows_24" />
+
+        <LinearLayout
+            android:id="@+id/item_1"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_below="@id/tv_list_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:src="@drawable/front_view_tasty_meat_burger_with_cheese_salad_dark_background"
+
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Burger"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="Rp. 28.000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_toEndOf="@id/item_1"
+            android:id="@+id/item_2"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="17dp"
+            android:layout_below="@id/tv_list_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:src="@drawable/foodiesfeed_com_grilled_whole_chicken"
+
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Ayam Bakar"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="Rp. 30.000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_3"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/item_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:src="@drawable/foodiesfeed_com_dim_sum_dumplings"
+               android:layout_width="130dp"
+                android:layout_height="130dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Dimsum"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="Rp. 28.000"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_toEndOf="@id/item_3"
+            android:id="@+id/item_4"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/item_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:src="@drawable/foodiesfeed_com_simple_italian_dish_spaghetti_with_fresh_basil_on_top"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Spaghetti"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="Rp. 28.000"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
