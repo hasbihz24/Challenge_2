@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.navArgs
 import com.example.challenge_2.databinding.FragmentMenuDetailBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -49,19 +51,20 @@ class MenuDetail : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val namaData = arguments?.getString("nama")
-        val hargaData = arguments?.getString("harga")
-        val gambarData = arguments?.getInt("gambar")
-        val lokasiData = arguments?.getString("lokasi")
-        val deskData = arguments?.getString("desk")
-        binding.ivBanner.setImageResource(gambarData!!)
-        binding.tvNama.text = namaData.toString()
-        binding.tvHarga.text = hargaData.toString()
-        binding.tvAlamat.text = lokasiData.toString()
-        binding.tvDeskripsi.text = deskData.toString()
+        val bundle = arguments
+        val data = bundle?.getParcelable<MyMenu>("DataMenu")
+        if (data != null) {
+            binding.ivBanner.setImageResource(data.gambar)
+            binding.tvNama.text = data.nama.toString()
+            binding.tvHarga.text = data.harga.toString()
+            binding.tvAlamat.text = data.lokasi.toString()
+            binding.tvDeskripsi.text = data.deskripsi.toString()
+        }
+        val urlData = data?.urlLokasi
+
 
         binding.tvAlamat.setOnClickListener {
-            openMaps()
+            openMaps(urlData)
         }
 
 
@@ -87,8 +90,7 @@ class MenuDetail : Fragment() {
             }
     }
 
-    fun openMaps(){
-        val urlData = arguments?.getString("url")
+    fun openMaps(urlData: String?){
         val mapsUri = Uri.parse(urlData)
         val mapIntent = Intent(Intent.ACTION_VIEW, mapsUri)
         mapIntent.setPackage("com.google.android.apps.maps")

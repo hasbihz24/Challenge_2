@@ -5,6 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.challenge_2.databinding.FragmentMenuDetailBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,7 +23,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class MainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
+    private lateinit var rvMenu: RecyclerView
+    private val list = ArrayList<MyMenu>()
+    private lateinit var lyUtama: ConstraintLayout
     private var param1: String? = null
     private var param2: String? = null
 
@@ -34,18 +43,24 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
+        rvMenu = view.findViewById(R.id.rvMenu)
+        list.addAll(getListMenu())
+        rvMenu.layoutManager = LinearLayoutManager(activity, GridLayoutManager.VERTICAL, false)
+        val listMenuAdapter = MenuAdapter(list)
+        rvMenu.adapter = listMenuAdapter
+        listMenuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: MyMenu) {
+                val  mBundle = Bundle()
+                mBundle.putParcelable("DataMenu", data)
+                findNavController().navigate(R.id.action_mainFragment3_to_menuDetail2, mBundle)
+            }
+        })
+        return view
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
-         */
+        val EXTRA_DATA = "EXTRA_DATA"
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
@@ -56,4 +71,20 @@ class MainFragment : Fragment() {
                 }
             }
     }
+    private fun getListMenu(): ArrayList<MyMenu> {
+        val dataName = resources.getStringArray(R.array.nama_menu)
+        val dataHarga = resources.getStringArray(R.array.harga_menu)
+        val dataGambar = resources.obtainTypedArray(R.array.gambar_menu)
+        val dataLokasi = resources.getStringArray(R.array.lokasi_menu)
+        val dataURL = resources.getStringArray(R.array.url_menu)
+        val dataDesk = resources.getStringArray(R.array.desk_menu)
+        val listMenu = ArrayList<MyMenu>()
+
+        for(i in dataHarga.indices){
+            val menu = MyMenu(dataGambar.getResourceId(i, -1), dataName[i], dataHarga[i], dataLokasi[i], dataURL[i], dataDesk[i])
+            listMenu.add(menu)
+        }
+        return listMenu
+    }
+
 }
