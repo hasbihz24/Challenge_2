@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.navArgs
+import com.example.challenge_2.databinding.FragmentMainBinding
 import com.example.challenge_2.databinding.FragmentMenuDetailBinding
 
 // TODO: Rename parameter arguments, choose names that match
