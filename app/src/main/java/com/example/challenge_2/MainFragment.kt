@@ -46,7 +46,7 @@ class MainFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         rvMenu = view.findViewById(R.id.rvMenu)
         list.addAll(getListMenu())
-        rvMenu.layoutManager = LinearLayoutManager(activity, LinearLayoutManagergi.VERTICAL, false)
+        rvMenu.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         val listMenuAdapter = MenuAdapter(list)
         rvMenu.adapter = listMenuAdapter
         listMenuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback{
