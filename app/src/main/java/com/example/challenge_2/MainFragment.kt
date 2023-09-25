@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.challenge_2.databinding.FragmentMainBinding
 import com.example.challenge_2.databinding.FragmentMenuDetailBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,6 +30,8 @@ class MainFragment : Fragment() {
     private lateinit var lyUtama: ConstraintLayout
     private var param1: String? = null
     private var param2: String? = null
+    private var _binding : FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +46,11 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_main, container, false)
-        rvMenu = view.findViewById(R.id.rvMenu)
+
+//        val view = inflater.inflate(R.layout.fragment_main, container, false)
+//        rvMenu = view.findViewById(R.id.rvMenu)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        rvMenu = binding.rvMenu
         list.addAll(getListMenu())
         rvMenu.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         val listMenuAdapter = MenuAdapter(list)
@@ -56,7 +62,7 @@ class MainFragment : Fragment() {
                 findNavController().navigate(R.id.action_mainFragment3_to_menuDetail2, mBundle)
             }
         })
-        return view
+        return binding.root
     }
 
     companion object {
