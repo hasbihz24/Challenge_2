@@ -117,7 +117,7 @@
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/foodiesfeed_com_cheeseburger" />
+                android:src="@color/grey"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/foodiesfeed_com_noodles_with_tomatoes" />
+                android:src="@color/grey" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/foodiesfeed_com_french_fries_with_ketchup_top_view" />
+                android:src="@color/grey" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -180,7 +180,7 @@
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/foodiesfeed_com_strawberry_milk_splash" />
+                android:src="@color/grey" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -211,6 +211,7 @@
             android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/changelayout"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignEnd="@id/tv_list_menu"

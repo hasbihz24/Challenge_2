@@ -3,16 +3,17 @@ package com.example.challenge_2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.challenge_2.databinding.FragmentMainBinding
 import com.example.challenge_2.databinding.FragmentMenuDetailBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,6 +31,8 @@ class MenuDetail : Fragment() {
     private var param2: String? = null
     private var _binding: FragmentMenuDetailBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: MainViewModel by viewModels()
+    var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +50,8 @@ class MenuDetail : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentMenuDetailBinding.inflate(inflater, container, false)
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView?.visibility = View.GONE
         return binding.root
     }
 
@@ -62,13 +67,51 @@ class MenuDetail : Fragment() {
             binding.tvDeskripsi.text = data.deskripsi.toString()
         }
         val urlData = data?.urlLokasi
+        val observer = Observer<Int>{newValue ->
+            binding.display.text = newValue.toString()
+            count = newValue
 
-
+        }
+        viewModel.counter.observe(requireActivity(), observer)
         binding.tvAlamat.setOnClickListener {
             openMaps(urlData)
         }
+        binding.increment.setOnClickListener {
+            wIncrementCount()
+        }
+        binding.decrement.setOnClickListener {
+            wDecrementCount()
+        }
 
+        binding.btnKeranjang.setOnClickListener {
+            MasukKeranjang(data)
 
+        }
+
+    }
+
+    private fun MasukKeranjang(data: MyMenu?) {
+       var dataSource = MenuDatabase.getInstance(requireActivity()).simpleCartDao
+        dataSource.insert(CartChart(itemMenu = data?.nama,
+            itemGambar = data?.gambar,
+            itemHarga = data?.harga,
+            itemQuantity = count))
+        var nama = data?.nama
+        val cekData = dataSource.getAllItemByName(nama)
+
+        if(cekData != null){
+            Toast.makeText(requireActivity(),"Data Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireActivity(),"Data Gagal Ditambahkan", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun wDecrementCount() {
+        viewModel.DecrementCount()
+    }
+
+    private fun wIncrementCount() {
+        viewModel.IncrementCount()
     }
 
     companion object {

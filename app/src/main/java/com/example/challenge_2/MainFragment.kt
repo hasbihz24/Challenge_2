@@ -1,5 +1,7 @@
 package com.example.challenge_2
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challenge_2.databinding.FragmentMainBinding
 import com.example.challenge_2.databinding.FragmentMenuDetailBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,12 +27,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class MainFragment : Fragment() {
-
+    private lateinit var sharedPreferences: SharedPreferences
+    private val sharedPrefName = "rvlayout"
     private lateinit var rvMenu: RecyclerView
     private val list = ArrayList<MyMenu>()
     private lateinit var lyUtama: ConstraintLayout
     private var param1: String? = null
     private var param2: String? = null
+    private var isGrid = true
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -50,11 +55,38 @@ class MainFragment : Fragment() {
 //        val view = inflater.inflate(R.layout.fragment_main, container, false)
 //        rvMenu = view.findViewById(R.id.rvMenu)
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        rvMenu = binding.rvMenu
+        sharedPreferences = requireActivity().getSharedPreferences(sharedPrefName, MODE_PRIVATE)
+        isGrid = sharedPreferences.getBoolean("Grid?", isGrid)
+        setupRecycleView(isGrid)
+        setupChangeLayout()
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView?.visibility = View.VISIBLE
+        return binding.root
+    }
+
+    private fun setupChangeLayout() {
+        binding.changelayout.setOnClickListener {
+            isGrid = !isGrid
+            setupRecycleView(isGrid)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("Grid?", isGrid)
+            editor.apply()
+        }
+    }
+
+
+    private fun setupRecycleView(isGrid: Boolean) {
+        list.clear()
         list.addAll(getListMenu())
-        rvMenu.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        val listMenuAdapter = MenuAdapter(list)
+        rvMenu = binding.rvMenu
+//        rvMenu.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val listMenuAdapter = MenuAdapter(list, isGrid)
         rvMenu.adapter = listMenuAdapter
+        if(isGrid){
+            rvMenu.layoutManager =  GridLayoutManager(activity, 2)
+        }else{
+            rvMenu.layoutManager = LinearLayoutManager(activity)
+        }
         listMenuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback{
             override fun onItemClicked(data: MyMenu) {
                 val  mBundle = Bundle()
@@ -62,7 +94,6 @@ class MainFragment : Fragment() {
                 findNavController().navigate(R.id.action_mainFragment3_to_menuDetail2, mBundle)
             }
         })
-        return binding.root
     }
 
     companion object {
