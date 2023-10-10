@@ -23,5 +23,21 @@
         <action
             android:id="@+id/action_mainFragment3_to_menuDetail2"
             app:destination="@id/menuDetail2" />
+        <action
+            android:id="@+id/action_mainFragment3_to_profilFragment3"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_mainFragment3_to_keranjangFragment"
+            app:destination="@id/keranjangFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.example.challenge_2.ProfilFragment"
+        android:label="fragment_profil"
+        tools:layout="@layout/fragment_profil" />
+    <fragment
+        android:id="@+id/keranjangFragment"
+        android:name="com.example.challenge_2.KeranjangFragment"
+        android:label="fragment_keranjang"
+        tools:layout="@layout/fragment_keranjang" />
 </navigation>

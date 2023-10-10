@@ -13,12 +13,12 @@
 
 
     <string-array name="harga_menu">
-        <item>Rp.12.000.000</item>
-        <item>Rp.18.000.000</item>
-        <item>Rp.11.000.000</item>
-        <item>Rp.14.000.000</item>
-        <item>Rp.15.000.000</item>
-        <item>Rp.22.000.000</item>
+        <item>Rp.12.000</item>
+        <item>Rp.18.000</item>
+        <item>Rp.11.000</item>
+        <item>Rp.14.000</item>
+        <item>Rp.15.000</item>
+        <item>Rp.22.000</item>
     </string-array>
 
 
