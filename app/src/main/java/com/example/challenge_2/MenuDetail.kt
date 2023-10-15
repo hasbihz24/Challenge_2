@@ -85,7 +85,6 @@ class MenuDetail : Fragment() {
 
         binding.btnKeranjang.setOnClickListener {
             MasukKeranjang(data)
-
         }
 
     }

@@ -28,7 +28,7 @@ class KeranjangFragment : Fragment() {
     private var param2: String? = null
     private var _binding : FragmentKeranjangBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: EditViewModel by viewModels()
     var countInc: Int = 0
     var countDecr: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,23 +57,27 @@ class KeranjangFragment : Fragment() {
 
         adapter.setOnIncrementClickCallback(object : KeranjangAdapter.OnIncrementClickCallback{
             override fun onIncrementClicked(data: CartChart, updateId: Long?) {
+                viewModel._edCounter.value = data.itemQuantity
                 val observer = Observer<Int>{newValue ->
                     countInc = newValue
                 }
-                viewModel.counter.observe(requireActivity(), observer)
-                database.updateQuantityByItemId(countInc, updateId)
+                viewModel.edcounter.observe(requireActivity(), observer)
                 wIncrementCount()
+                database.updateQuantityByItemId(countInc, updateId)
+                viewModel.edcounter.removeObserver(observer)
             }
         })
 
         adapter.setOnDecrementClickCallback(object : KeranjangAdapter.OnDecrementClickCallback{
-            override fun onDecrementClicked(data: CartChart) {
+            override fun onDecrementClicked(data: CartChart, updateId: Long?) {
                 val observer = Observer<Int>{newValue ->
                     countDecr = newValue
                 }
-                viewModel.counter.observe(requireActivity(), observer)
-                database.updateQuantityByItemId(countDecr, data.itemId)
+
+                viewModel.edcounter.observe(requireActivity(), observer)
                 wDecrementCount()
+                database.updateQuantityByItemId(countDecr, updateId)
+                viewModel.edcounter.removeObserver(observer)
             }
         })
         return binding.root

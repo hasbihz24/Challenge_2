@@ -53,14 +53,14 @@ class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<Recycl
         }
         holder.binding.decrement.setOnClickListener {
             val updatedItem =  dataList[position].itemId
-           onDecrementClickCallback.onDecrementClicked((dataList[holder.adapterPosition]))
+           onDecrementClickCallback.onDecrementClicked((dataList[holder.adapterPosition]),(updatedItem))
         }
     }
     interface OnIncrementClickCallback {
         fun onIncrementClicked(data: CartChart, updateId: Long?)
     }
     interface OnDecrementClickCallback {
-        fun onDecrementClicked(data: CartChart)
+        fun onDecrementClicked(data: CartChart, updateId: Long?)
     }
 
 
