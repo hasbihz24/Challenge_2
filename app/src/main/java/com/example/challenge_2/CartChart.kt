@@ -16,7 +16,7 @@ data class CartChart(
     var itemHarga: String? = null,
 
     @ColumnInfo(name = "item_gambar")
-    var itemGambar: Int? = -1,
+    var itemGambar: String? = null,
 
     @ColumnInfo(name = "item_quantity")
     var itemQuantity: Int = -1,

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.challenge_2.databinding.MyCartItemsBinding
 
 class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -69,7 +70,7 @@ class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<Recycl
 class LinearCartHolder(val binding: MyCartItemsBinding) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(data: CartChart){
         val (Itemid,nama,harga,gambar, jumlah) = data
-        binding.IvMenu.setImageResource(gambar!!)
+        Glide.with(binding.IvMenu).load(gambar).into(binding.IvMenu)
         binding.display.text = jumlah.toString()
         binding.tvNamaMenu.text = nama
         binding.tvHargaMenu.text = harga
