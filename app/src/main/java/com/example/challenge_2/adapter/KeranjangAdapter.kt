@@ -1,15 +1,12 @@
-package com.example.challenge_2
+package com.example.challenge_2.adapter
 
 import android.content.Context
-import android.view.Display
 import android.view.LayoutInflater
-import android.view.OnReceiveContentListener
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.challenge_2.model.CartChart
+import com.example.challenge_2.model.MenuDatabase
 import com.example.challenge_2.databinding.MyCartItemsBinding
 
 class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -38,6 +35,7 @@ class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<Recycl
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val linearHolder = holder as LinearCartHolder
+
         linearHolder.onBind(dataList[position])
         holder.binding.btnDelete.setOnClickListener {
             val deletedItem =  dataList[position].itemId
@@ -53,14 +51,14 @@ class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<Recycl
         }
         holder.binding.decrement.setOnClickListener {
             val updatedItem =  dataList[position].itemId
-           onDecrementClickCallback.onDecrementClicked((dataList[holder.adapterPosition]))
+           onDecrementClickCallback.onDecrementClicked((dataList[holder.adapterPosition]),(updatedItem))
         }
     }
     interface OnIncrementClickCallback {
         fun onIncrementClicked(data: CartChart, updateId: Long?)
     }
     interface OnDecrementClickCallback {
-        fun onDecrementClicked(data: CartChart)
+        fun onDecrementClicked(data: CartChart, updateId: Long?)
     }
 
 
@@ -68,8 +66,8 @@ class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<Recycl
 
 class LinearCartHolder(val binding: MyCartItemsBinding) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(data: CartChart){
-        val (Itemid,nama,harga,gambar, jumlah) = data
-        binding.IvMenu.setImageResource(gambar!!)
+        val (Itemid,nama,harga,hargasatuan,gambar, jumlah) = data
+        Glide.with(binding.IvMenu).load(gambar).into(binding.IvMenu)
         binding.display.text = jumlah.toString()
         binding.tvNamaMenu.text = nama
         binding.tvHargaMenu.text = harga

@@ -1,4 +1,4 @@
-package com.example.challenge_2
+package com.example.challenge_2.model
 
 import android.content.Context
 import androidx.room.Database

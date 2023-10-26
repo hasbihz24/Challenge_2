@@ -1,11 +1,13 @@
-package com.example.challenge_2
+package com.example.challenge_2.model
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.challenge_2.model.CartChart
 
 @Dao
 interface SimpleCartDao {
@@ -27,6 +29,9 @@ interface SimpleCartDao {
     @Update
     fun update(chart: CartChart)
 
-    @Query("UPDATE Cart_Table SET item_quantity = :newQuantity where itemId = :itemIdParams")
-    fun  updateQuantityByItemId(newQuantity: Int, itemIdParams: Long?)
+    @Query("UPDATE Cart_Table SET item_quantity = :newQuantity, item_harga = :newHarga where itemId = :itemIdParams")
+    fun  updateQuantityByItemId(newQuantity: Int,newHarga: String, itemIdParams: Long?)
+
+    @Query("SELECT SUM(item_harga) FROM Cart_Table")
+    fun  getPriceCount(): LiveData<Int>
 }

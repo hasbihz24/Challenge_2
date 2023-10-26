@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ProfilFragment">
+    tools:context=".EditProfileFragment">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/AppBar"
         android:layout_width="match_parent"
@@ -16,11 +16,10 @@
             app:titleCentered="true"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="center"
-            android:gravity="right"
-            android:paddingStart="10dp"
-            app:menu="@menu/top_bar_menu"
-            app:title="Profile" />
+            app:menu="@menu/top_bar_edit_menu"
+            app:title="Profile"
+            app:navigationIcon="@drawable/baseline_close_24">
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
     <ImageView
         android:layout_width="120dp"
@@ -38,10 +37,10 @@
         android:textColor="@color/black"
         android:layout_marginTop="20dp"/>
     <EditText
+
         android:id="@+id/EtUsername"
-        android:enabled="false"
         android:layout_marginTop="8dp"
-        android:background="@color/grey"
+        android:background="@drawable/edittextprofil"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
@@ -55,11 +54,11 @@
         android:textColor="@color/black"
         android:layout_marginTop="15dp"/>
     <EditText
+        android:enabled="false"
         android:id="@+id/Et_Password"
         android:inputType="textPassword"
-        android:enabled="false"
         android:layout_marginTop="8dp"
-        android:background="@color/grey"
+        android:background="@drawable/edittextprofil"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
@@ -73,11 +72,11 @@
         android:textColor="@color/black"
         android:layout_marginTop="15dp"/>
     <EditText
+        android:enabled="false"
         android:id="@+id/EtEmail"
         android:inputType="textEmailAddress"
-        android:enabled="false"
         android:layout_marginTop="8dp"
-        android:background="@color/grey"
+        android:background="@drawable/edittextprofil"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
@@ -93,22 +92,13 @@
     <EditText
         android:id="@+id/EtNoTelp"
         android:inputType="number"
-        android:enabled="false"
         android:layout_marginTop="8dp"
-        android:background="@color/grey"
+        android:background="@drawable/edittextprofil"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="40dp"/>
-    
-    <Button
-        android:id="@+id/BtnLogout"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="40dp"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:text="Logout"/>
+
 
 
 </LinearLayout>

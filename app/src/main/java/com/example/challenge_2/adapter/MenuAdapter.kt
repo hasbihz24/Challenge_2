@@ -1,18 +1,18 @@
-package com.example.challenge_2
+package com.example.challenge_2.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challenge_2.databinding.FragmentMenuDetailBinding
+import com.bumptech.glide.Glide
+import com.example.challenge_2.R
 import com.example.challenge_2.databinding.MyMenuItemsBinding
+import com.example.challenge_2.model.Data
 
-class MenuAdapter(private val listMenu: ArrayList<MyMenu>, val isGrid: Boolean):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MenuAdapter(val listMenu: ArrayList<Data>,val isGrid: Boolean):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
-
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
@@ -52,28 +52,30 @@ class MenuAdapter(private val listMenu: ArrayList<MyMenu>, val isGrid: Boolean):
 
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: MyMenu)
+        fun onItemClicked(data: Data)
     }
 
 }
 
 class GridMenuHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun onBind(listMenu: MyMenu){
+    fun onBind(listMenu: Data){
         val ivMenu = itemView.findViewById<ImageView>(R.id.Iv_menu)
         val tvMenu = itemView.findViewById<TextView>(R.id.tvNamaMenu)
         val hargaMenu = itemView.findViewById<TextView>(R.id.tvHargaMenu)
-        val(gambar, nama, harga) = listMenu
-        ivMenu.setImageResource(gambar)
+        val(alamat, createAt, detail, harga, hargaFormat, id, gambar, nama, updateAt) = listMenu
+        Glide.with(ivMenu).load(gambar).into(ivMenu)
         tvMenu.text =  nama
-        hargaMenu.text = harga
+        hargaMenu.text = hargaFormat
     }
 }
 
 class LinearMenuHolder(val binding: MyMenuItemsBinding): RecyclerView.ViewHolder(binding.root) {
-    fun onBind(listMenu: MyMenu){
-        val(gambar, nama, harga) = listMenu
-        binding.IvMenu.setImageResource(gambar)
+    fun onBind(listMenu: Data){
+        val(alamat, createAt, detail, harga, hargaFormat, id, gambar, nama, updateAt) = listMenu
+        Glide.with(binding.IvMenu)
+            .load(gambar)
+            .into(binding.IvMenu);
         binding.tvNamaMenu.text = nama
-        binding.tvHargaMenu.text = harga
+        binding.tvHargaMenu.text = hargaFormat
     }
 }

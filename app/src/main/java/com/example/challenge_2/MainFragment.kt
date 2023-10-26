@@ -1,20 +1,29 @@
 package com.example.challenge_2
 
+import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.challenge_2.adapter.MenuAdapter
+import com.example.challenge_2.api.APIClient
 import com.example.challenge_2.databinding.FragmentMainBinding
-import com.example.challenge_2.databinding.FragmentMenuDetailBinding
+import com.example.challenge_2.model.Data
+import com.example.challenge_2.model.MenuResponse
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,12 +40,12 @@ class MainFragment : Fragment() {
     private val sharedPrefName = "rvlayout"
     private lateinit var rvMenu: RecyclerView
     private val list = ArrayList<MyMenu>()
-    private lateinit var lyUtama: ConstraintLayout
     private var param1: String? = null
     private var param2: String? = null
     private var isGrid = true
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
+    private val dataList = ArrayList<Data>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +73,8 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+
+
     private fun setupChangeLayout() {
         binding.changelayout.setOnClickListener {
             isGrid = !isGrid
@@ -76,24 +87,57 @@ class MainFragment : Fragment() {
 
 
     private fun setupRecycleView(isGrid: Boolean) {
-        list.clear()
-        list.addAll(getListMenu())
-        rvMenu = binding.rvMenu
+//        list.clear()
+//        list.addAll(getListMenu())
+
+        APIClient.instance.getMenu()
+            .enqueue(object : Callback<MenuResponse>{
+                @SuppressLint("SuspiciousIndentation")
+                override fun onResponse(
+                    call: Call<MenuResponse>,
+                    response: Response<MenuResponse>
+                ) {
+                    val body = response.body()
+                    Log.e("SimpleNetworking", Gson().toJson(body))
+                    body?.let {
+                        val data = body.data
+                        val status = if (body.status != null) true else false
+                        if(status){
+                            if (!data.isNullOrEmpty()){
+                                binding.progressBar.isVisible = false
+                                rvMenu = binding.rvMenu
+                                dataList.clear()
+                                dataList.addAll(it.data)
+                                val listMenuAdapter = MenuAdapter(dataList, isGrid)
+                                rvMenu.adapter = listMenuAdapter
+                                if(isGrid){
+                                    rvMenu.layoutManager =  GridLayoutManager(activity, 2)
+                                }else{
+                                    rvMenu.layoutManager = LinearLayoutManager(activity)
+                                }
+                                listMenuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback{
+                                    override fun onItemClicked(data: Data) {
+                                        val  mBundle = Bundle()
+                                        mBundle.putParcelable("DataMenu", data)
+                                        findNavController().navigate(R.id.action_mainFragment3_to_menuDetail2, mBundle)
+                                    }
+                                })
+                            }
+                            else {
+                                Log.e("SimpleNetworking", "Kosong")
+                            }
+                        }else{
+                            Log.e("SimpleNetworking", "KOSONG")
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<MenuResponse>, t: Throwable) {
+                    Log.e("SimpleNetworking", t.message.toString())
+                }
+            })
+
 //        rvMenu.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        val listMenuAdapter = MenuAdapter(list, isGrid)
-        rvMenu.adapter = listMenuAdapter
-        if(isGrid){
-            rvMenu.layoutManager =  GridLayoutManager(activity, 2)
-        }else{
-            rvMenu.layoutManager = LinearLayoutManager(activity)
-        }
-        listMenuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: MyMenu) {
-                val  mBundle = Bundle()
-                mBundle.putParcelable("DataMenu", data)
-                findNavController().navigate(R.id.action_mainFragment3_to_menuDetail2, mBundle)
-            }
-        })
     }
 
     companion object {
@@ -123,5 +167,6 @@ class MainFragment : Fragment() {
         }
         return listMenu
     }
+
 
 }

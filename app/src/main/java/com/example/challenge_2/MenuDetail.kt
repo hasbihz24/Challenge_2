@@ -3,7 +3,6 @@ package com.example.challenge_2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.challenge_2.databinding.FragmentMainBinding
+import com.bumptech.glide.Glide
+import com.example.challenge_2.ViewModel.MainViewModel
 import com.example.challenge_2.databinding.FragmentMenuDetailBinding
+import com.example.challenge_2.model.CartChart
+import com.example.challenge_2.model.Data
+import com.example.challenge_2.model.MenuDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -58,15 +61,15 @@ class MenuDetail : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val bundle = arguments
-        val data = bundle?.getParcelable<MyMenu>("DataMenu")
+        val data = bundle?.getParcelable<Data>("DataMenu")
         if (data != null) {
-            binding.ivBanner.setImageResource(data.gambar)
+            Glide.with(binding.ivBanner).load(data.imageUrl).into(binding.ivBanner)
             binding.tvNama.text = data.nama.toString()
             binding.tvHarga.text = data.harga.toString()
-            binding.tvAlamat.text = data.lokasi.toString()
-            binding.tvDeskripsi.text = data.deskripsi.toString()
+            binding.tvAlamat.text = data.alamatResto.toString()
+            binding.tvDeskripsi.text = data.detail.toString()
         }
-        val urlData = data?.urlLokasi
+        val urlData = data?.imageUrl
         val observer = Observer<Int>{newValue ->
             binding.display.text = newValue.toString()
             count = newValue
@@ -85,18 +88,22 @@ class MenuDetail : Fragment() {
 
         binding.btnKeranjang.setOnClickListener {
             MasukKeranjang(data)
-
         }
 
     }
 
-    private fun MasukKeranjang(data: MyMenu?) {
+    private fun MasukKeranjang(data: Data?) {
+        val harga = data?.harga
+        val total = harga!! * count
        var dataSource = MenuDatabase.getInstance(requireActivity()).simpleCartDao
-        dataSource.insert(CartChart(itemMenu = data?.nama,
-            itemGambar = data?.gambar,
-            itemHarga = data?.harga,
-            itemQuantity = count))
-        var nama = data?.nama
+        dataSource.insert(
+            CartChart(itemMenu = data.nama,
+            itemGambar = data.imageUrl,
+            itemHarga = total.toString(),
+            itemHargaSatuan = data.harga,
+            itemQuantity = count)
+        )
+        var nama = data.nama
         val cekData = dataSource.getAllItemByName(nama)
 
         if(cekData != null){
