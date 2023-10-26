@@ -1,4 +1,4 @@
-package com.example.challenge_2
+package com.example.challenge_2.ViewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

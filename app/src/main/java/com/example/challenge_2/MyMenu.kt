@@ -2,7 +2,6 @@ package com.example.challenge_2
 
 import android.os.Parcel
 import android.os.Parcelable
-import java.net.URI
 
 data class MyMenu(
     val gambar:Int,

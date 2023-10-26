@@ -34,10 +34,39 @@
         android:id="@+id/profilFragment"
         android:name="com.example.challenge_2.ProfilFragment"
         android:label="fragment_profil"
-        tools:layout="@layout/fragment_profil" />
+        tools:layout="@layout/fragment_profil" >
+        <action
+            android:id="@+id/action_profilFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/keranjangFragment"
         android:name="com.example.challenge_2.KeranjangFragment"
         android:label="fragment_keranjang"
-        tools:layout="@layout/fragment_keranjang" />
+        tools:layout="@layout/fragment_keranjang" >
+        <action
+            android:id="@+id/action_keranjangFragment_to_pesanFragment"
+            app:destination="@id/pesanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.challenge_2.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pesanFragment"
+        android:name="com.example.challenge_2.PesanFragment"
+        android:label="fragment_pesan"
+        tools:layout="@layout/fragment_pesan" >
+        <action
+            android:id="@+id/action_pesanFragment_to_keranjangFragment"
+            app:destination="@id/keranjangFragment" />
+        <action
+            android:id="@+id/action_pesanFragment_to_mainFragment3"
+            app:destination="@id/mainFragment3" />
+    </fragment>
 </navigation>

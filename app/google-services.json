@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "761935857535",
+    "project_id": "challenge-binar-152a8",
+    "storage_bucket": "challenge-binar-152a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761935857535:android:77e208166f61e0a3e77c4a",
+        "android_client_info": {
+          "package_name": "com.example.challenge_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaXMEEtrdfuk9WqmX12W4a6GxTZuZi5Rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

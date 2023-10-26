@@ -1,4 +1,4 @@
-package com.example.challenge_2
+package com.example.challenge_2.model
 
 
 data class MyKeranjang(

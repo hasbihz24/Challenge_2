@@ -1,15 +1,13 @@
-package com.example.challenge_2
+package com.example.challenge_2.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.challenge_2.databinding.FragmentMenuDetailBinding
+import com.example.challenge_2.R
 import com.example.challenge_2.databinding.MyMenuItemsBinding
 import com.example.challenge_2.model.Data
 

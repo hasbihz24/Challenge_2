@@ -1,18 +1,16 @@
-package com.example.challenge_2
+package com.example.challenge_2.Activity
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.challenge_2.R
+import com.example.challenge_2.ViewModel.AuthViewModel
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,13 +19,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navContainer) as NavHostFragment
         val navController = navHostFragment.navController
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
 // Menghubungkan BottomNavigationView dengan NavController
         bottomNavigationView.setupWithNavController(navController)
-
+        val authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        authViewModel.getCurrentUser().observe(this) { user ->
+            if (user == null) {
+                val intent = Intent(this, UserActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
-
 
 }

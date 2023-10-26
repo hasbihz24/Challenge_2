@@ -9,15 +9,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.challenge_2.adapter.MenuAdapter
 import com.example.challenge_2.api.APIClient
 import com.example.challenge_2.databinding.FragmentMainBinding
-import com.example.challenge_2.databinding.FragmentMenuDetailBinding
 import com.example.challenge_2.model.Data
 import com.example.challenge_2.model.MenuResponse
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -73,6 +72,8 @@ class MainFragment : Fragment() {
         bottomNavigationView?.visibility = View.VISIBLE
         return binding.root
     }
+
+
 
     private fun setupChangeLayout() {
         binding.changelayout.setOnClickListener {
@@ -166,5 +167,6 @@ class MainFragment : Fragment() {
         }
         return listMenu
     }
+
 
 }

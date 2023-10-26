@@ -3,19 +3,19 @@ package com.example.challenge_2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
-import com.example.challenge_2.databinding.FragmentMainBinding
+import com.example.challenge_2.ViewModel.MainViewModel
 import com.example.challenge_2.databinding.FragmentMenuDetailBinding
+import com.example.challenge_2.model.CartChart
 import com.example.challenge_2.model.Data
+import com.example.challenge_2.model.MenuDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -93,12 +93,17 @@ class MenuDetail : Fragment() {
     }
 
     private fun MasukKeranjang(data: Data?) {
+        val harga = data?.harga
+        val total = harga!! * count
        var dataSource = MenuDatabase.getInstance(requireActivity()).simpleCartDao
-        dataSource.insert(CartChart(itemMenu = data?.nama,
-            itemGambar = data?.imageUrl,
-            itemHarga = data?.harga.toString(),
-            itemQuantity = count))
-        var nama = data?.nama
+        dataSource.insert(
+            CartChart(itemMenu = data.nama,
+            itemGambar = data.imageUrl,
+            itemHarga = total.toString(),
+            itemHargaSatuan = data.harga,
+            itemQuantity = count)
+        )
+        var nama = data.nama
         val cekData = dataSource.getAllItemByName(nama)
 
         if(cekData != null){
