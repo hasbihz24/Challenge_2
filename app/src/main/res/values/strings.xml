@@ -2,63 +2,6 @@
     <string name="app_name">Challenge_2</string>
     <string name="diskon_text">Pesan makanan dengan aplikasi dan dapatkan diskonmu</string>
 
-    <string-array name="nama_menu">
-        <item>Ayam Goreng</item>
-        <item>Sate Ayam</item>
-        <item>Ayam Geprek</item>
-        <item>Ayam Bakar</item>
-        <item>Mie Ayam</item>
-        <item>Katsu</item>
-    </string-array>
-
-
-    <string-array name="harga_menu">
-        <item>Rp.12.000</item>
-        <item>Rp.18.000</item>
-        <item>Rp.11.000</item>
-        <item>Rp.14.000</item>
-        <item>Rp.15.000</item>
-        <item>Rp.22.000</item>
-    </string-array>
-
-
-    <string-array name="gambar_menu">
-        <item>@drawable/ayam_goreng</item>
-        <item>@drawable/sate_ayam</item>
-        <item>@drawable/ayam_geprek</item>
-        <item>@drawable/ayam_bakar</item>
-        <item>@drawable/mie_ayam</item>
-        <item>@drawable/katsu</item>
-    </string-array>
-
-    <string-array name="desk_menu">
-        <item>Ayam goreng Indonesia adalah hidangan klasik dalam kuliner Indonesia yang terbuat dari potongan-potongan daging ayam yang digoreng hingga kecokelatan dengan bumbu rempah-rempah yang kaya rasa</item>
-        <item>Sate ayam adalah hidangan Indonesia yang terdiri dari potongan-potongan daging ayam yang dimarinasi dalam campuran bumbu rempah-rempah khas Indonesia</item>
-        <item>Ayam geprek adalah hidangan Indonesia yang terdiri dari potongan daging ayam yang digoreng hingga kecokelatan dan renyah, lalu dihancurkan</item>
-        <item>Ayam bakar adalah hidangan Indonesia yang terdiri dari potongan-potongan daging ayam yang dimarinasi dengan rempah-rempah khas, kemudian dipanggang hingga kecokelatan.</item>
-        <item>Mie ayam adalah hidangan mie yang disajikan dengan potongan daging ayam, kadang-kadang juga dengan tambahan pangsit, dan biasanya disiram dengan kuah kaldu.</item>
-        <item>Katsu adalah hidangan Jepang yang terdiri dari potongan daging yang dilapisi tepung roti dan digoreng hingga kecokelatan dan renyah.</item>
-    </string-array>
-
-    <string-array name="lokasi_menu">
-        <item>Jl. Prof. Herman Yohanes, Terban, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55223</item>
-        <item>Jl. Komojoyo No.12B, Mrican, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281</item>
-        <item>Jl. Samironobaru No.1C, Samirono, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281</item>
-        <item>Jl. Wardhani, Kotabaru, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55224</item>
-        <item>Jl. Garuda Gg. Garuda II No.85 A, Mantup, Baturetno, Kec. Banguntapan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55197</item>
-        <item>Jl. Menteri Supeno, Sorosutan, Kec. Umbulharjo, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55162</item>
-    </string-array>
-
-
-    <string-array name="url_menu">
-        <item>https://www.google.com/maps/place/Ayam+goreng+Hj+Toyib/@-7.7825385,110.3613483,15z/data=!4m7!3m6!1s0x2e7a59d42abc4595:0xd11ec6baefc988eb!8m2!3d-7.7825385!4d110.3793727!15sCgtheWFtIGdvcmVuZ1oNIgtheWFtIGdvcmVuZ5IBEmNoaWNrZW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11v5_5wqnf?entry=tts</item>
-        <item>https://www.google.com/maps/place/Sate+Ayam+Bumbu+Merah+Kamajaya/@-7.7718778,110.3853338,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5908c0f64c01:0x1d3ddadecda30bf!8m2!3d-7.7718831!4d110.3879141!16s%2Fg%2F11swzp6mm0?entry=tts</item>
-        <item>https://www.google.com/maps/place/Ayam+Geprek+%26+Susu+(Preksu)+Colombo/@-7.7777539,110.3823989,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a59c97a30377d:0x331b605ec75c93d0!8m2!3d-7.7777592!4d110.3849792!16s%2Fg%2F11dxlc93yl?entry=ttu</item>
-        <item>https://www.google.com/maps/place/Ayam+Bakar+Pak+Yanto/@-7.7862164,110.3733217,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a582d72600539:0x7534aeaef21b4a7d!8m2!3d-7.7862217!4d110.375902!16s%2Fg%2F11cmq060ls?entry=ttu</item>
-        <item>https://www.google.com/maps/place/Mie+Ayam+Jakarta+"Mie%26Mie"+-+Banguntapan/@-7.8138796,110.4156569,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a570fde693a65:0x772b02be16d9892a!8m2!3d-7.8138849!4d110.4182372!16s%2Fg%2F11j48l6527?entry=ttu</item>
-        <item>https://www.google.com/maps/place/Ramen+N+Katsu/@-7.8152841,110.3473383,14z/data=!4m10!1m2!2m1!1sKatsu!3m6!1s0x2e7a570b268f9b95:0x6aa2f2171bc87949!8m2!3d-7.8167286!4d110.3818715!15sCgVLYXRzdVoHIgVrYXRzdZIBE2phcGFuZXNlX3Jlc3RhdXJhbnTgAQA!16s%2Fg%2F11b65j70zg?entry=ttu</item>
-    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="desk">Varian dari pangsit tradisional China yang disajikan dengan cara dikukus dan digoreng.</string>
 </resources>

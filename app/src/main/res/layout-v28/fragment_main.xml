@@ -35,8 +35,7 @@
             android:layout_marginTop="2dp"
             android:text="Mau Makan Apa Kamu Hari Ini"
             android:textFontWeight="400"
-            android:textSize="12sp"
-            tools:targetApi="p" />
+            android:textSize="12sp" />
 
         <ImageButton
             android:contentDescription="Icon1"
