@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -41,7 +40,7 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="5"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:text="20 jt"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

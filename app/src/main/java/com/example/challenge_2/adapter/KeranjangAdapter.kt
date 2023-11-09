@@ -1,5 +1,6 @@
 package com.example.challenge_2.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class KeranjangAdapter(private val context: Context):RecyclerView.Adapter<Recycl
     private val dataList = mutableListOf<CartChart>()
     override fun getItemCount(): Int = dataList.size
     var count = 0
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<CartChart>) {
         // Mengisi data dengan data dari database
         this.dataList.clear()

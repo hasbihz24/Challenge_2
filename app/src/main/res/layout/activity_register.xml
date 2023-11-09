@@ -23,12 +23,15 @@
         android:textSize="20sp"/>
 
     <EditText
+        android:inputType="text"
+        android:hint="Username"
         android:id="@+id/EtUsername"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="#F1F1F1"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:autofillHints="" />
 
     <TextView
         android:layout_marginTop="12dp"
@@ -39,13 +42,15 @@
         android:textSize="20sp"/>
 
     <EditText
+        android:hint="Password"
         android:id="@+id/EtPassword"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="#F1F1F1"
         android:layout_marginTop="10dp"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:autofillHints="" />
 
 
         <TextView
@@ -57,13 +62,15 @@
             android:textSize="20sp"/>
 
         <EditText
+            android:hint="user@email.com"
             android:id="@+id/EtEmail"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="#F1F1F1"
             android:layout_marginTop="10dp"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:autofillHints="" />
 
 
         <TextView
@@ -75,13 +82,15 @@
             android:textSize="20sp"/>
 
         <EditText
+            android:hint="12341"
             android:id="@+id/EtNoTelp"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="#F1F1F1"
             android:layout_marginTop="10dp"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:autofillHints="" />
     <Button
         android:id="@+id/btnRegis"
         android:layout_marginTop="20dp"

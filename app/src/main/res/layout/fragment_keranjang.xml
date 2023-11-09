@@ -10,14 +10,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:id="@+id/AppBar">
+        android:background="@color/white">
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="wrap_content"
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/topAppBar"
             app:title="Keranjang"
             android:paddingStart="10dp"
+            android:paddingEnd="0dp"
             android:layout_gravity="center"
             />
     </com.google.android.material.appbar.AppBarLayout>
@@ -26,7 +26,6 @@
         android:id="@+id/rvKeranjang"
         android:layout_width="match_parent"
         android:layout_height="480dp"
-        android:layout_below="@id/AppBar"
         android:layout_marginTop="20dp" />
 
     <RelativeLayout
@@ -34,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:paddingEnd="8dp"
+        android:paddingStart="0dp"
         android:paddingBottom="90dp">
 
         <RelativeLayout
@@ -44,22 +44,24 @@
             android:background="@color/grey" />
 
         <TextView
-            android:id="@+id/tv_totalHarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/et_TotalHarga"
             android:layout_marginStart="8dp"
             android:text="Total Harga"
-            android:textSize="10sp" />
+            android:textSize="11sp" />
 
         <EditText
+            android:inputType="text"
+            android:hint="Total"
             android:id="@+id/et_TotalHarga"
             android:layout_width="93dp"
             android:layout_height="20dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
-            android:background="@color/grey" />
+            android:background="@color/grey"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/btn_pesan"

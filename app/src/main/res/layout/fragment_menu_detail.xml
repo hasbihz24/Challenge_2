@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MenuDetail"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:ignore="Overdraw">
 
     <!-- TODO: Update blank fragment layout -->
    <ImageView
-       android:id="@+id/iv_banner"
+       android:id="@+id/ivBanner"
        android:layout_width="match_parent"
        android:layout_height="200dp"/>
     <RelativeLayout
@@ -29,16 +30,16 @@
             android:text="Nama Makanan"
             android:textSize="18sp"/>
         <TextView
+            android:id="@+id/tvHarga"
             android:layout_marginEnd="10dp"
             android:layout_alignParentEnd="true"
-            android:id="@+id/tv_harga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nama Makanan"
             android:textSize="14sp"/>
         <TextView
+            android:id="@+id/tvDeskripsi"
             android:layout_marginStart="12dp"
-            android:id="@+id/tv_deskripsi"
             android:layout_marginTop="5dp"
             android:textSize="12sp"
             android:layout_below="@id/tv_nama"
@@ -68,10 +69,10 @@
             android:text="Lokasi"/>
 
         <TextView
+            android:id="@+id/tvAlamat"
             android:lineSpacingExtra="5sp"
             android:translationY="-2.74sp"
             android:layout_marginStart="12dp"
-            android:id="@+id/tv_alamat"
             android:layout_marginTop="5dp"
             android:textSize="12sp"
             android:layout_below="@id/food_icon"
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:text="@string/desk"
             android:clickable="true"
-            />
+            android:focusable="true" />
     </RelativeLayout>
     <RelativeLayout
         android:gravity="bottom"
@@ -118,7 +119,6 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:gravity="center"
-                android:inputType="number"
                 android:text="1"
                 android:textColor="@android:color/black" />
             <Button

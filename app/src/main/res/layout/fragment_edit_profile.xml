@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".EditProfileFragment">
+    tools:context=".EditProfileFragment"
+    tools:ignore="HardcodedText, ContentDescription" >
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/AppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
@@ -22,6 +22,7 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
     <ImageView
+        android:contentDescription="Profile Picture"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
@@ -37,14 +38,16 @@
         android:textColor="@color/black"
         android:layout_marginTop="20dp"/>
     <EditText
-
+        android:inputType="text"
+        android:hint="username"
         android:id="@+id/EtUsername"
         android:layout_marginTop="8dp"
         android:background="@drawable/edittextprofil"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
-        android:layout_marginEnd="40dp"/>
+        android:layout_marginEnd="40dp"
+        android:autofillHints="" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,15 +57,17 @@
         android:textColor="@color/black"
         android:layout_marginTop="15dp"/>
     <EditText
+        android:id="@+id/EtPassword"
+        android:hint="*******"
         android:enabled="false"
-        android:id="@+id/Et_Password"
         android:inputType="textPassword"
         android:layout_marginTop="8dp"
         android:background="@drawable/edittextprofil"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
-        android:layout_marginEnd="40dp"/>
+        android:layout_marginEnd="40dp"
+        android:autofillHints="" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,6 +77,8 @@
         android:textColor="@color/black"
         android:layout_marginTop="15dp"/>
     <EditText
+
+        android:hint="user@email.com"
         android:enabled="false"
         android:id="@+id/EtEmail"
         android:inputType="textEmailAddress"
@@ -80,7 +87,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
-        android:layout_marginEnd="40dp"/>
+        android:layout_marginEnd="40dp"
+        android:autofillHints="" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,6 +98,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="15dp"/>
     <EditText
+        android:hint="1234..."
         android:id="@+id/EtNoTelp"
         android:inputType="number"
         android:layout_marginTop="8dp"
@@ -97,7 +106,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
-        android:layout_marginEnd="40dp"/>
+        android:layout_marginEnd="40dp"
+        android:autofillHints="" />
 
 
 

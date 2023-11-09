@@ -23,12 +23,15 @@
             android:textSize="20sp"/>
         
         <EditText
-            android:id="@+id/Et_Username"
+            android:id="@+id/EtUsername"
+            android:inputType="text"
+            android:hint="username"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="#F1F1F1"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:autofillHints="" />
 
         <TextView
             android:layout_marginTop="12dp"
@@ -39,13 +42,15 @@
             android:textSize="20sp"/>
 
         <EditText
-            android:id="@+id/Et_Password"
+            android:id="@+id/EtPassword"
+            android:hint="password"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="#F1F1F1"
             android:layout_marginTop="10dp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:autofillHints="" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,14 +61,14 @@
             android:layout_marginEnd="88dp"/>
         
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btnLogin"
             android:layout_marginTop="20dp"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:text="Login"
             android:layout_gravity="center"/>
         <TextView
-            android:id="@+id/tv_Register"
+            android:id="@+id/tvRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have an account? Register"

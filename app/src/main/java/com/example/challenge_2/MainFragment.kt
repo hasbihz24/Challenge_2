@@ -194,21 +194,6 @@ class MainFragment : Fragment() {
                 }
             }
     }
-    private fun getListMenu(): ArrayList<MyMenu> {
-        val dataName = resources.getStringArray(R.array.nama_menu)
-        val dataHarga = resources.getStringArray(R.array.harga_menu)
-        val dataGambar = resources.obtainTypedArray(R.array.gambar_menu)
-        val dataLokasi = resources.getStringArray(R.array.lokasi_menu)
-        val dataURL = resources.getStringArray(R.array.url_menu)
-        val dataDesk = resources.getStringArray(R.array.desk_menu)
-        val listMenu = ArrayList<MyMenu>()
-
-        for(i in dataHarga.indices){
-            val menu = MyMenu(dataGambar.getResourceId(i, -1), dataName[i], dataHarga[i], dataLokasi[i], dataURL[i], dataDesk[i])
-            listMenu.add(menu)
-        }
-        return listMenu
-    }
 
 
 }
