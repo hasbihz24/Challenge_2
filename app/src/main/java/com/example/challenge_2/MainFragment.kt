@@ -9,18 +9,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.challenge_2.ViewModel.ApiViewModel
 import com.example.challenge_2.adapter.MenuAdapter
 import com.example.challenge_2.api.APIClient
 import com.example.challenge_2.databinding.FragmentMainBinding
 import com.example.challenge_2.model.Data
 import com.example.challenge_2.model.MenuResponse
+import com.example.challenge_2.model.Status
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
+import org.koin.android.ext.android.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,6 +50,7 @@ class MainFragment : Fragment() {
     private var isGrid = true
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: ApiViewModel by inject()
     private val dataList = ArrayList<Data>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,9 +70,11 @@ class MainFragment : Fragment() {
 //        val view = inflater.inflate(R.layout.fragment_main, container, false)
 //        rvMenu = view.findViewById(R.id.rvMenu)
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+
         sharedPreferences = requireActivity().getSharedPreferences(sharedPrefName, MODE_PRIVATE)
         isGrid = sharedPreferences.getBoolean("Grid?", isGrid)
-        setupRecycleView(isGrid)
+        //setupRecycleView(isGrid)
+        setupRecycleViewCoroutines(isGrid)
         setupChangeLayout()
         val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView?.visibility = View.VISIBLE
@@ -85,11 +93,45 @@ class MainFragment : Fragment() {
         }
     }
 
-
+    private fun setupRecycleViewCoroutines(isGrid : Boolean){
+        viewModel.getAllMenu().observe(requireActivity()){
+            when(it.status){
+                Status.SUCCESS -> {
+                    Log.e("Data API", Gson().toJson(it.data))
+                    binding.progressBar.isVisible = false
+                    val imageUrl = it.data?.data?.get(0)?.imageUrl
+                    rvMenu = binding.rvMenu
+                    dataList.clear()
+                    dataList.addAll(it.data!!.data)
+                    val listMenuAdapter = MenuAdapter(dataList, isGrid)
+                    rvMenu.adapter = listMenuAdapter
+                    if(isGrid){
+                        rvMenu.layoutManager =  GridLayoutManager(activity, 2)
+                    }else{
+                        rvMenu.layoutManager = LinearLayoutManager(activity)
+                    }
+                    listMenuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback{
+                        override fun onItemClicked(data: Data) {
+                            val  mBundle = Bundle()
+                            mBundle.putParcelable("DataMenu", data)
+                            findNavController().navigate(R.id.action_mainFragment3_to_menuDetail2, mBundle)
+                        }
+                    })
+                }
+                Status.LOADING -> {
+                    binding.progressBar.isVisible = true
+                }
+                Status.ERROR -> {
+                    Log.e("API Data", it.message.toString())
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(requireActivity(),"Data Error", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
     private fun setupRecycleView(isGrid: Boolean) {
 //        list.clear()
 //        list.addAll(getListMenu())
-
         APIClient.instance.getMenu()
             .enqueue(object : Callback<MenuResponse>{
                 @SuppressLint("SuspiciousIndentation")
